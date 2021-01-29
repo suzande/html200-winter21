@@ -1,0 +1,7 @@
+//Lesson - 02 Assignment 2:
+
+let y = "Count down ";
+
+for (let b = 5; b >= 0; b--) {
+  console.log(y, b);
+}
