@@ -1,49 +1,55 @@
 function callTransType() {
-    const transType = prompt('What type of Transaction would you like?, Select W to Widthdraw, Select D to Deposit, Select B for Account Balance, Select Q to Quit')
 
     let balance = 500;
+    let balanceLimit = 50000;
+    let transaction = true;
+    let completeDeposit = 0;
 
-    switch (transType) {
-        case 'W': {
-            const totalWithdraw = prompt('How much would you like to withdraw?');
-            console.log('Total to withdraw: ' + totalWithdraw);
-            balance = balance - totalWithdraw;
-            console.log('Your balance today is: ' + balance);
-            if (balance < 300)
-                alert("Warning, your balnce is less than $300.00");
-            break;
-        }
-        case 'D': {
-            const totalDeposit = prompt('How much would you like to deposit?');
-            console.log('Total deposit amount: ' = totalDeposit);
-            if (totalDeposit + balance <= 50, 000) {
+    while (transaction != 'Q') {
+        const transType = prompt('What type of Transaction would you like?, Select W to Widthdraw, Select D to Deposit, Select B for Account Balance, Select Q to Quit')
+        let toDo = transType.toUpperCase();
+        switch (toDo) {
+            case 'W':
+                console.log(transType);
+                const totalWithdraw = prompt('How much would you like to withdraw?');
+                alert('Total to withdraw: ' + '$' + totalWithdraw);
+                newBalance = balance - totalWithdraw;
+                alert('Your balance today is: ' + '$' + newBalance);
+                if (newBalance < 0) {
+                    alert("Your asking for more than Account Balance.")
+                } else if (newBalance < 300) {
+                    alert("Are you sure you want to continue?")
+                    alert("Warning, your balance is now less $300.00");
+                }
+                toDo = prompt('What type of Transaction would you like?, Select W to Widthdraw, Select D to Deposit, Select B for Account Balance, Select Q to Quit')
+            case 'D':
+                console.log(transType);
+                const totalDeposit = prompt('How much would you like to deposit?');
+                alert('Total deposit amount: ' + '$' + totalDeposit);
                 let amountDeposited = Number(totalDeposit);
-                console.log(amount);
-                balance = balance + amountDeposited;
-                console.log('Your balance today is: ' + balance);
+                completeDeposit = amountDeposited + balance;
+                if (completeDeposit <= balanceLimit) {
+                    console.log(amountDeposited);
+                    balance = balance + amountDeposited;
+                    alert('Your balance today is: ' + '$' + balance);
+                } else {
+                    (totalDeposit + balance > balanceLimit);
+                    alert('Your total balance exceeds what is permitted.');
+                }
+                toDo = prompt('What type of Transaction would you like?, Select W to Widthdraw, Select D to Deposit, Select B for Account Balance, Select Q to Quit')
+            case 'B':
+                console.log(transType);
+                alert("Your balance today is: " + '$' + balance);
+                toDo = prompt('What type of Transaction would you like?, Select W to Widthdraw, Select D to Deposit, Select B for Account Balance, Select Q to Quit')
+            default:
+                console.log(transType);
+                alert('Quit Transition Completed');
                 break;
-            } else {
-                (totalDeposit + balance > 50, 000);
-                console.log('Your total balance exceeds what is permitted.');
-                break;
-            }
         }
-        case 'B': {
-            console.log("Your balance today is: " + balance);
-            break;
-        }
-        default: {
-            alert('Quit Transition Completed');
-            break;
-        }
+        break;
     }
-
-
-
-
-
-
-
+    console.log('Transaction Complete')
+}
 
 //Deposit
 //Account Balance
